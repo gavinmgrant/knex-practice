@@ -20,15 +20,15 @@ const ShoppingListService = {
                 return rows[0]
             })
     },
-    deleteItem(knex, id) {
-        return knex('shopping_list')
-            .where({ id })
-            .delete()
-    },
     updateItem(knex, id, newItemFields) {
         return knex('shopping_list')
             .where({ id })
             .update(newItemFields)
+    },
+    deleteItem(knex, id) {
+        return knex('shopping_list')
+            .where({ id })
+            .delete()
     },
 }
 

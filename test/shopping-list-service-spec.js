@@ -3,7 +3,7 @@ const ShoppingListService = require('../src/shopping-list-service')
 const knex = require('knex')
 const { getAllItems } = require("../src/shopping-list-service")
 
-describe(`Articles service object`, function() {
+describe(`Shopping list service object`, function() {
     let db
 
     // this is an array of mock data that represents valid content for the database
@@ -11,21 +11,21 @@ describe(`Articles service object`, function() {
         {
             id: 1,
             name: 'Item 1',
-            price: '5',
+            price: '5.00',
             date_added: new Date('2029-01-22T16:28:32.615Z'),
             category: 'Main',
         },
         {
             id: 2,
             name: 'Item 2',
-            price: '10',
+            price: '10.00',
             date_added: new Date('2029-01-22T16:28:32.615Z'),
             category: 'Main',
         },
         {
             id: 3,
             name: 'Item 3',
-            price: '15',
+            price: '15.00',
             date_added: new Date('2029-01-22T16:28:32.615Z'),
             category: 'Main',
         }
@@ -85,7 +85,7 @@ describe(`Articles service object`, function() {
             return ShoppingListService.deleteItem(db, itemId)
                 .then(() => ShoppingListService.getAllItems(db))
                 .then(allItems => {
-                    // copy the test items array without the "deleted" article
+                    // copy the test items array without the "deleted" item
                     const expected = testItems
                         .filter(item => item.id !== itemId)
                         .map(item => ({
@@ -100,7 +100,7 @@ describe(`Articles service object`, function() {
             const idOfItemToUpdate = 3
             const newItemData = {
                 name: 'Updated item name',
-                price: '5',
+                price: '5.00',
                 date_added: new Date(),
                 checked: true,
                 category: 'Main'
@@ -129,7 +129,7 @@ describe(`Articles service object`, function() {
         it(`insertItem() inserts a new item and resolves the new item with an 'id'`, () => {
             const newItem = {
                 name: 'Test item name',
-                price: '5',
+                price: '5.00',
                 date_added: new Date('2020-01-01T00:00:00.000Z'),
                 checked: true,
                 category: 'Main'
